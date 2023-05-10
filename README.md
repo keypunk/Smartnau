@@ -1,3 +1,3 @@
-# Smartnau
+#Smartnau
 
-[UML-Diagramm](/home/sherby/Desktop/UML_Smartnau.png)
+[UML-Diagramm](UML/UML_Smartnau.png)
