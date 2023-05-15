@@ -16,19 +16,19 @@ Smartnau ist ein Begrüßungsbot, welches über eine App Nachrichten auf einem B
 ---
 ## MQTT Kanaele
 
-Sub message : String
+Sub message : String  
 Pub message : String  
 
-Sub message_date : String
+Sub message_date : String  
 Pub message_date : String  
 
-Sub message_time : String
+Sub message_time : String  
 Pub message_time : String  
 
-Sub UUID : String
+Sub UUID : String  
 Pub UUID : String  
 
-Sub button, state : byte
+Sub button, state : byte  
 Pub button, state : byte  
 
 
