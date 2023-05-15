@@ -1,3 +1,6 @@
+
+![pixelart](img/pixel1.png)
+
 # Smartnau
 
 ---
@@ -9,6 +12,26 @@ Smartnau ist ein Begrüßungsbot, welches über eine App Nachrichten auf einem B
 ## Nice-to-have
 - MAC-Adressen in einem Raum in eine Datenbank speichern, um alle Anwesenden in einem Raum abzuzählen
 - Statusanzeige, ob ein Raum voll ist oder nicht. (Grün oder Rot)
+
+---
+## MQTT Kanaele
+
+Sub message : String
+Pub message : String  
+
+Sub message_date : String
+Pub message_date : String  
+
+Sub message_time : String
+Pub message_time : String  
+
+Sub UUID : String
+Pub UUID : String  
+
+Sub button, state : byte
+Pub button, state : byte  
+
+
 
 ---
 
