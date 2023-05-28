@@ -18,9 +18,12 @@ import com.example.smartnau.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String BROKER_URI = "tcp://example-broker:1883"; // default port for MQTT
+    private static final String CLIENT_ID = "your-client-id"; // Mqtt can generate client ids
+    private MqttHandler mqttHandler;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -45,6 +48,28 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        mqttHandler = new MqttHandler();
+        mqttHandler.connect(BROKER_URI, CLIENT_ID);
+        publishMessage("minecraft", "Hallo");
+    }
+
+    @Override
+    public void onDestroy() {
+        mqttHandler.disconnect();
+        super.onDestroy();
+    }
+
+    private void publishMessage(String topic, String message) {
+        Toast.makeText(this, "Publishing message: " + message, Toast.LENGTH_SHORT)
+                .show();
+        mqttHandler.publish(topic, message);
+    }
+
+    private void subscribeToTopic(String topic) {
+        Toast.makeText(this, "Subscribing to topic " + topic, Toast.LENGTH_SHORT)
+                .show();
+        mqttHandler.subscribe(topic);
     }
 
     @Override
