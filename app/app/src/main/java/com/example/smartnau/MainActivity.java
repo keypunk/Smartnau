@@ -1,10 +1,10 @@
 package com.example.smartnau;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -15,10 +15,11 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.smartnau.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.nio.charset.StandardCharsets;
+
 public class MainActivity extends AppCompatActivity {
-    private static final String BROKER_URI = "tcp://example-broker:1883"; // default port for MQTT
-    private static final String CLIENT_ID = "your-client-id"; // Mqtt can generate client ids
-    private MqttHandler mqttHandler;
+    private static final String TOPIC = "Room/Temperature";
+    private static final String TAG = MainActivity.class.getSimpleName();
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -44,27 +45,52 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mqttHandler = new MqttHandler();
-        mqttHandler.connect(BROKER_URI, CLIENT_ID);
-        publishMessage("minecraft", "Hallo");
+        MqttClient mqtt = new MqttClient();
+        mqtt.connectToBroker("my-mqtt-client-id", "broker.hivemq.com", 1883,
+                "my-user", "my-password");
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            Log.e(TAG, "Thread " + Thread.currentThread().getName() + " was interrupted: " +
+                    e.getMessage());
+        }
+        mqtt.subscribe(TOPIC, (message) -> {
+            try {
+                String convertedMessageContent = new String(message.getPayloadAsBytes(),
+                        StandardCharsets.UTF_8);
+                Log.d(TAG, String.format("Message received from topic '%s': '%s'%n",
+                        message.getTopic(),
+                        convertedMessageContent));
+                // TODO: Insert functions to work with received data
+            } catch (Exception e) {
+                Log.e(TAG, String.format(TAG, "Message from %s: %s",
+                        message.getTopic(),
+                        message.getPayloadAsBytes()));
+            }
+        });
+        mqtt.publish(TOPIC, "Hallo Welt!");
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            Log.e(TAG, "Thread " + Thread.currentThread().getName() + " was interrupted: " +
+                    e.getMessage());
+        }
+        mqtt.unsubscribe(TOPIC);
+        mqtt.disconnect();
+    }
+
+    private void receiveData(String topic, String message) {
+        Log.d(TAG, String.format("Received message '%s' from topic '%s'", message, topic));
+        try {
+            // TODO: Insert data type to be used to convert from String
+        } catch (Exception e) {
+            // TODO: Specify Exception to be appropriate to the format exception.
+        }
     }
 
     @Override
-    public void onDestroy() {
-        mqttHandler.disconnect();
+    protected void onDestroy() {
         super.onDestroy();
-    }
-
-    private void publishMessage(String topic, String message) {
-        Toast.makeText(this, "Publishing message: " + message, Toast.LENGTH_SHORT)
-                .show();
-        mqttHandler.publish(topic, message);
-    }
-
-    private void subscribeToTopic(String topic) {
-        Toast.makeText(this, "Subscribing to topic " + topic, Toast.LENGTH_SHORT)
-                .show();
-        mqttHandler.subscribe(topic);
     }
 
     @Override
@@ -95,4 +121,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
