@@ -1,5 +1,5 @@
 
-![pixelart](img/pixel1.png)
+![pixelart](img/ui_sketch.png)
 
 # Smartnau
 
