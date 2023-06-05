@@ -1,4 +1,4 @@
-package com.example.smartnau;
+package com.example.smartnau.utilities;
 
 import android.util.Log;
 
@@ -46,6 +46,10 @@ public class MqttClient {
             }
         });
     }
+
+    public void logStream(){
+    }
+
 
     public void unsubscribe(String topic) {
         client.unsubscribe(Mqtt3Unsubscribe.builder().topicFilter(topic).build());

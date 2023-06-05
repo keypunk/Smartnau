@@ -1,4 +1,4 @@
-package com.example.smartnau;
+package com.example.smartnau.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +12,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.smartnau.utilities.MqttClient;
+import com.example.smartnau.R;
 import com.example.smartnau.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
 

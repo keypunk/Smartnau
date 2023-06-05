@@ -1,4 +1,4 @@
-package com.example.smartnau;
+package com.example.smartnau.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartnau.R;
 import com.example.smartnau.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
