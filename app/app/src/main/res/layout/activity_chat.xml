@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/offwhite"
-    android:layout_width="match_parent">
+    android:background="@color/offwhite">
 
 
     <View
-        android:id="@+id/viewBackground"
+        android:id="@+id/robotBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/background_content_top"
+        android:background="@drawable/background_robot"
+        app:layout_constraintBottom_toTopOf="@id/chatBackground"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/layoutSend"/>
-    
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <View
+        android:id="@+id/chatBackground"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_chat_history"
+        app:layout_constraintBottom_toTopOf="@id/layoutSend"
+        app:layout_constraintTop_toTopOf="robotBackground" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageMenu"
         android:layout_width="30dp"
@@ -27,19 +40,19 @@
         android:padding="5dp"
         android:src="@drawable/round_menu_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageInfo"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:src="@drawable/outline_info_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textName"
@@ -56,8 +69,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageMenu"
         app:layout_constraintEnd_toStartOf="@+id/imageInfo"
         app:layout_constraintStart_toEndOf="@+id/imageMenu"
-        app:layout_constraintTop_toTopOf="@id/imageMenu"/>
-    
+        app:layout_constraintTop_toTopOf="@id/imageMenu" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -67,25 +80,26 @@
         android:padding="20dp"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
-        app:layout_constraintTop_toBottomOf="@+id/imageMenu"/>
+        app:layout_constraintBottom_toBottomOf="@+id/robotBackground"
+        app:layout_constraintTop_toBottomOf="@+id/imageMenu" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        app:layout_constraintBottom_toBottomOf="@id/viewBackground"
-        app:layout_constraintEnd_toEndOf="@id/viewBackground"
-        app:layout_constraintStart_toStartOf="@id/viewBackground"
-        app:layout_constraintTop_toTopOf="@id/viewBackground"/>
-    
+        app:layout_constraintBottom_toBottomOf="@id/robotBackground"
+        app:layout_constraintEnd_toEndOf="@id/robotBackground"
+        app:layout_constraintStart_toStartOf="@id/robotBackground"
+        app:layout_constraintTop_toTopOf="@id/robotBackground" />
+
     <FrameLayout
         android:id="@+id/layoutSend"
-        android:layout_width="40dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/background_chat_input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -97,29 +111,30 @@
             android:layout_marginLeft="4dp"
             android:padding="8dp"
             android:src="@drawable/round_send_24"
-            android:tint="@color/black"/>
+            android:tint="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/inputMessage"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_chattext_input"
+            android:hint="Type a message.."
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/layoutSend"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </FrameLayout>
-    
-    <EditText
-        android:id="@+id/inputMessage"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/background_chat_input"
-        android:hint="Type a message.."
-        android:imeOptions="actionDone"
-        android:importantForAutofill="no"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/grey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/layoutSend"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginEnd="8dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
