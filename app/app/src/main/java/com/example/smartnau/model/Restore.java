@@ -1,4 +1,4 @@
-package com.example.smartnau.utilities;
+package com.example.smartnau.model;
 
 public class Restore {
     public Restore(){

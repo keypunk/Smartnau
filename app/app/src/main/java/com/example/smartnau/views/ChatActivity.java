@@ -1,11 +1,11 @@
-package com.example.smartnau.activities;
+package com.example.smartnau.views;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.smartnau.utilities.ChatMessage;
+import com.example.smartnau.model.ChatMessage;
 import com.example.smartnau.R;
 
 import java.util.List;

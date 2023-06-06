@@ -1,4 +1,4 @@
-package com.example.smartnau.activities;
+package com.example.smartnau.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
