@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.smartnau.R;
 import com.example.smartnau.databinding.ActivityChatBinding;
-import com.example.smartnau.utilities.MqttClient;
+import com.example.smartnau.model.MqttClient;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.nio.charset.StandardCharsets;

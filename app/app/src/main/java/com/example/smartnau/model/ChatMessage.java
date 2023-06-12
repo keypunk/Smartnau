@@ -1,4 +1,7 @@
 package com.example.smartnau.model;
 
-public class ChatMessage {
+import androidx.fragment.app.Fragment;
+
+public class ChatMessage extends Fragment {
+
 }

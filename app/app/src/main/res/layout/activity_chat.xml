@@ -17,9 +17,9 @@
         app:layout_constraintBottom_toTopOf="@id/chatBackground"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"/>
 
-    <View
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatBackground"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -27,8 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/background_chat_history"
-        app:layout_constraintBottom_toTopOf="@id/layoutSend"
-        app:layout_constraintTop_toTopOf="robotBackground" />
+        app:layout_constraintBottom_toTopOf="@id/layoutSend" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageMenu"
@@ -80,8 +79,7 @@
         android:padding="20dp"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@+id/robotBackground"
-        app:layout_constraintTop_toBottomOf="@+id/imageMenu" />
+        app:layout_constraintBottom_toBottomOf="@+id/robotBackground" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -92,7 +90,7 @@
         app:layout_constraintStart_toStartOf="@id/robotBackground"
         app:layout_constraintTop_toTopOf="@id/robotBackground" />
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutSend"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -104,37 +102,41 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:padding="8dp"
-            android:src="@drawable/round_send_24"
-            android:tint="@color/black"
-            />
 
         <EditText
             android:id="@+id/inputMessage"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/background_chattext_input"
             android:hint="Type a message.."
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:paddingEnd="4dp"
             android:textColor="@color/black"
             android:textColorHint="@color/grey"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/layoutSend"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/button2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            app:icon="@drawable/round_send_24"
+            app:iconTint="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/inputMessage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="@color/pink" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

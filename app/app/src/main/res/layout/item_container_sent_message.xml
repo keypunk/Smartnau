@@ -6,24 +6,26 @@
     android:padding="4dp">
 
     <TextView
-        android:id="@+id/textMessage"
+        android:id="@+id/textMessage_sent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_sent_message"
         android:padding="12dp"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:text="Test Message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.8"/>
     <TextView
-        android:id="@+id/texDateTime"
+        android:id="@+id/texDateTime_sent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:textColor="@color/black"
         android:textSize="10sp"
+        android:text="01.01.2000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMessage"/>
+        app:layout_constraintTop_toBottomOf="@+id/textMessage_sent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
