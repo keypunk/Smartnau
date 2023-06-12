@@ -3,6 +3,8 @@ package com.example.smartnau.views;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,17 +42,26 @@ public class ChatActivity extends AppCompatActivity {
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
         final Button button = findViewById(R.id.button2);
+        EditText text_send = findViewById(R.id.inputMessage);
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+            public void onClick(View view) {
+                String msg = text_send.getText().toString();
+                if (!msg.equals("")){
+                    Toast.makeText(ChatActivity.this, msg, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ChatActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
+                }
+                text_send.setText("");
             }
         });
     }
 
-    private void sendMessage() {
-        UserMessage message = new UserMessage();
-        message.setMessage("findViewById(R.id.inputMessage).");
-        message.setCreatedAt(System.currentTimeMillis());
-        mMessageList.add(message);
+    private void sendMessage(String message) {
+        UserMessage emessage = new UserMessage();
+        emessage.setMessage(message);
+        emessage.setCreatedAt(System.currentTimeMillis());
+        mMessageList.add(emessage);
     }
 
 
