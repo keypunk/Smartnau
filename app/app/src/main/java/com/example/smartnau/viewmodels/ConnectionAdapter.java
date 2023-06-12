@@ -3,12 +3,12 @@ package com.example.smartnau.viewmodels;
 import com.example.smartnau.model.MqttClient;
 
 
-public class MQTTViewModel {
+public class ConnectionAdapter {
 
 
     private MqttClient mqtt;
 
-    public MQTTViewModel() {
+    public ConnectionAdapter() {
         mqtt = new MqttClient();
     }
 
