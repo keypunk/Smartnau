@@ -16,7 +16,7 @@ import com.example.smartnau.model.UserMessage;
 
 import java.util.List;
 
-public class MessageListAdapter extends RecyclerView.Adapter {
+public class ChatAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
@@ -25,10 +25,10 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     private List<BaseMessage> mMessageList;
 
     private RecyclerView mMessageRecycler;
-    private MessageListAdapter mMessageAdapter;
+    private ChatAdapter mMessageAdapter;
 
 
-    public MessageListAdapter(Context context, List<BaseMessage> messageList) {
+    public ChatAdapter(Context context, List<BaseMessage> messageList) {
         mContext = context;
         mMessageList = messageList;
     }
