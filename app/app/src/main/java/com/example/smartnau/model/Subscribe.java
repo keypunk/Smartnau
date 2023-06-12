@@ -62,6 +62,7 @@ public class Subscribe implements ConnectionCredentials {
         try {
             int pressesAsInteger = Integer.parseInt(pressesAsString);
         } catch (NumberFormatException e) {
+            throw new SubscribeException("Conversion mishandling in topic " + topic, e.getCause());
         }
     }
 
