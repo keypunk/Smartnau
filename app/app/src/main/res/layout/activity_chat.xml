@@ -23,6 +23,8 @@
         android:id="@+id/chatBackground"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:padding="15dp"
+        android:scrollbars="vertical"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -37,6 +39,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="12dp"
         android:padding="5dp"
+
         android:src="@drawable/round_menu_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -124,7 +127,7 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="0dp"
             android:layout_marginEnd="4dp"
             app:icon="@drawable/round_send_24"

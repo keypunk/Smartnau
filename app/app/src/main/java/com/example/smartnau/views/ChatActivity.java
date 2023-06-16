@@ -64,6 +64,7 @@ public class ChatActivity extends AppCompatActivity {
         emessage.setCreatedAt(System.currentTimeMillis());
         mMessageList.add(emessage);
         mMessageAdapter.notifyItemInserted(mMessageList.size());
+        mMessageRecycler.smoothScrollToPosition(mMessageList.size());
     }
 
 
