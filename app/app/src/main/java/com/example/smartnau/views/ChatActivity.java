@@ -17,6 +17,7 @@ import com.example.smartnau.model.ChatMessage;
 import com.example.smartnau.model.UserMessage;
 import com.example.smartnau.viewmodels.ChatAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,7 +26,7 @@ public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
     private RecyclerView mMessageRecycler;
     private ChatAdapter mMessageAdapter;
-    private List<BaseMessage> mMessageList = List.of(new UserMessage());
+    private List<BaseMessage> mMessageList = new ArrayList<BaseMessage>();
     // TODO: Build Chat function with mocked data (with Char. Limit)
     // TODO: Char. Limit: Check String length and feed it to UI element
 
@@ -48,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String msg = text_send.getText().toString();
                 if (!msg.equals("")){
-                    Toast.makeText(ChatActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    sendMessage(msg);
                 } else {
                     Toast.makeText(ChatActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
@@ -62,6 +63,7 @@ public class ChatActivity extends AppCompatActivity {
         emessage.setMessage(message);
         emessage.setCreatedAt(System.currentTimeMillis());
         mMessageList.add(emessage);
+        mMessageAdapter.notifyItemInserted(mMessageList.size());
     }
 
 
