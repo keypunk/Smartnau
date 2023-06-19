@@ -84,10 +84,11 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/robotBackground" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/boot"
         app:layout_constraintBottom_toBottomOf="@id/robotBackground"
         app:layout_constraintEnd_toEndOf="@id/robotBackground"
         app:layout_constraintStart_toStartOf="@id/robotBackground"
