@@ -32,18 +32,6 @@
         app:layout_constraintBottom_toTopOf="@id/layoutSend" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageMenu"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:padding="5dp"
-        android:src="@drawable/round_menu_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageInfo"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -59,7 +47,6 @@
         android:id="@+id/textName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:gravity="center"
@@ -67,10 +54,8 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageMenu"
         app:layout_constraintEnd_toStartOf="@+id/imageInfo"
-        app:layout_constraintStart_toEndOf="@+id/imageMenu"
-        app:layout_constraintTop_toTopOf="@id/imageMenu" />
+        tools:layout_editor_absoluteY="18dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -85,8 +70,7 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="0dp"
         android:src="@drawable/boot"
         app:layout_constraintBottom_toBottomOf="@id/robotBackground"
         app:layout_constraintEnd_toEndOf="@id/robotBackground"
