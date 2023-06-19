@@ -38,7 +38,7 @@ public class Subscribe implements ConnectionCredentials {
         // TODO: Connect to ConnectionAdapter so it can be updated using DataBinding
     }
 
-    // TODO: Possible separation of 'Yes' and 'No' button presses
+    // TODO: Separate yes and no button values from String (yy,nn)
     public void subscribeForPresses() {
         // Subscribe for button presses
         mqttClient.subscribe(ROOM_BUTTONPRESS, (presses) -> {
