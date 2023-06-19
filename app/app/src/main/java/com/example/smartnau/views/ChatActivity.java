@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartnau.R;
 import com.example.smartnau.databinding.ActivityChatBinding;
 import com.example.smartnau.model.BaseMessage;
-import com.example.smartnau.model.ChatMessage;
 import com.example.smartnau.model.UserMessage;
 import com.example.smartnau.viewmodels.ChatAdapter;
 
@@ -22,7 +21,6 @@ import java.util.List;
 
 
 public class ChatActivity extends AppCompatActivity {
-    private List<ChatMessage> chatMessages;
     private ActivityChatBinding binding;
     private RecyclerView mMessageRecycler;
     private ChatAdapter mMessageAdapter;
