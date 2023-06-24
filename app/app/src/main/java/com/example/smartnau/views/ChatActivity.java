@@ -7,24 +7,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartnau.R;
 import com.example.smartnau.databinding.ActivityChatBinding;
-import com.example.smartnau.model.BaseMessage;
-import com.example.smartnau.model.UserMessage;
-import com.example.smartnau.viewmodels.ChatAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.smartnau.viewmodels.ChatViewModel;
 
 
 public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
     private RecyclerView mMessageRecycler;
     private ChatAdapter mMessageAdapter;
-    private List<BaseMessage> mMessageList = new ArrayList<BaseMessage>();
+
+
     // TODO: Build Chat function with mocked data (with Char. Limit)
     // TODO: Char. Limit: Check String length and feed it to UI element
 
@@ -34,36 +31,38 @@ public class ChatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ChatViewModel viewModel = new ViewModelProvider(this).get(ChatViewModel.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        mMessageRecycler = (RecyclerView) findViewById(R.id.chatBackground);
-        mMessageAdapter = new ChatAdapter(this, mMessageList);
+        mMessageRecycler = (RecyclerView) findViewById(R.id.itemList);
+        mMessageAdapter = new ChatAdapter(this, viewModel.getMessageList());
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
+        viewModel.greetUser();
+
+
         final Button button = findViewById(R.id.button2);
         EditText text_send = findViewById(R.id.inputMessage);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String msg = text_send.getText().toString();
-                if (!msg.equals("")){
-                    sendMessage(msg);
-                } else {
+                try {
+                    String message = text_send.getText().toString();
+                    viewModel.sendMessage(message);
+                    text_send.setText("");
+                    mMessageAdapter.notifyItemInserted(viewModel.getMessageList().size());
+                    mMessageRecycler.smoothScrollToPosition(viewModel.getMessageList().size());
+                } catch (Exception e) {
                     Toast.makeText(ChatActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
-                text_send.setText("");
+
             }
         });
     }
 
-    private void sendMessage(String message) {
-        UserMessage emessage = new UserMessage();
-        emessage.setMessage(message);
-        emessage.setCreatedAt(System.currentTimeMillis());
-        mMessageList.add(emessage);
-        mMessageAdapter.notifyItemInserted(mMessageList.size());
-        mMessageRecycler.smoothScrollToPosition(mMessageList.size());
-    }
+
 
 
 

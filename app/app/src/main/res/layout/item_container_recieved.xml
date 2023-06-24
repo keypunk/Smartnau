@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="24dp">
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/textMessage_recieved"
@@ -14,7 +14,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         android:text="Test Message"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.8"/>
     <TextView
@@ -25,7 +25,7 @@
         android:textColor="@color/black"
         android:textSize="10sp"
         android:text="01.01.2000"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMessage_recieved"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

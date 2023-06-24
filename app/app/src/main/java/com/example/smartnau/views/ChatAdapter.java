@@ -1,4 +1,4 @@
-package com.example.smartnau.viewmodels;
+package com.example.smartnau.views;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartnau.R;
 import com.example.smartnau.model.BaseMessage;
 import com.example.smartnau.model.UserMessage;
+import com.example.smartnau.viewmodels.Utils;
 
 import java.util.List;
 
@@ -58,10 +59,8 @@ public class ChatAdapter extends RecyclerView.Adapter {
         BaseMessage message = (BaseMessage) mMessageList.get(position);
 
         if (message instanceof UserMessage) {
-            // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
-            // If some other user sent the message
             return VIEW_TYPE_MESSAGE_RECEIVED;
         }
     }

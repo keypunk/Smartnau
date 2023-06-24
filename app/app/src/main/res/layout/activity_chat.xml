@@ -14,13 +14,13 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/background_robot"
-        app:layout_constraintBottom_toTopOf="@id/chatBackground"
+        app:layout_constraintBottom_toTopOf="@id/itemList"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatBackground"
+        android:id="@+id/itemList"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:padding="15dp"
@@ -43,19 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="1"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageInfo"
-        tools:layout_editor_absoluteY="18dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -69,6 +56,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/robotBackground" />
 
     <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/robotGif"
         android:layout_width="240dp"
         android:layout_height="0dp"
         android:src="@drawable/boot"
