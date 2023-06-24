@@ -19,9 +19,6 @@ public class Robot {
         currentState = RobotStates.IDLE;
     }
 
-    public void exclamationMark() {
-        currentState = RobotStates.EXCLAMATION_MARK;
-    }
 
     public void question() {
         currentState = RobotStates.QUESTION;

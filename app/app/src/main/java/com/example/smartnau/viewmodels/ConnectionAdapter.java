@@ -11,7 +11,7 @@ public class ConnectionAdapter {
     private MqttClient mqtt;
 
     public ConnectionAdapter() {
-        mqtt = new MqttClient();
+        MqttClient mqttClient = MqttClient.getMqttClient();
     }
 
     /* TODO: Insert functions for Databinding i.e. display message & button presses through

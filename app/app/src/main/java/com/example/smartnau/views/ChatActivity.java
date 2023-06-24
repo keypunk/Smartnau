@@ -15,6 +15,8 @@ import com.example.smartnau.R;
 import com.example.smartnau.databinding.ActivityChatBinding;
 import com.example.smartnau.viewmodels.ChatViewModel;
 
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class ChatActivity extends AppCompatActivity {
     private ActivityChatBinding binding;
@@ -43,6 +45,7 @@ public class ChatActivity extends AppCompatActivity {
 
         final Button button = findViewById(R.id.button2);
         EditText text_send = findViewById(R.id.inputMessage);
+        GifImageView gifImageView = new GifImageView(this);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +55,7 @@ public class ChatActivity extends AppCompatActivity {
                     String message = text_send.getText().toString();
                     viewModel.sendMessage(message);
                     text_send.setText("");
+                    gifImageView.setImageResource(R.drawable.smiling_bot);
                     mMessageAdapter.notifyItemInserted(viewModel.getMessageList().size());
                     mMessageRecycler.smoothScrollToPosition(viewModel.getMessageList().size());
                 } catch (Exception e) {

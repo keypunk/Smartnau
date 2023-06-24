@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatViewModel extends ViewModel {
+    private MqttClient mqttClient = MqttClient.getMqttClient();
     private List<BaseMessage> mMessageList = new ArrayList<BaseMessage>();
-    private Subscribe subscribe = new Subscribe(new MqttClient());
-    private Publish publish = new Publish(new MqttClient());
+    private Subscribe subscribe = new Subscribe(mqttClient);
+    private Publish publish = new Publish(mqttClient);
 
     public List<BaseMessage> getMessageList() {
         return mMessageList;
@@ -31,6 +32,7 @@ public class ChatViewModel extends ViewModel {
             emessage.setMessage(message);
             emessage.setCreatedAt(System.currentTimeMillis());
             mMessageList.add(emessage);
+            publish.publishMessages(message);
         } else {
             throw new Exception("Message is empty");
         }

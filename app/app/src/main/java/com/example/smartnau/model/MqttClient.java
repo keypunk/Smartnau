@@ -8,9 +8,20 @@ import com.hivemq.client.mqtt.mqtt3.message.unsubscribe.Mqtt3Unsubscribe;
 
 import java.util.function.Consumer;
 
-public class MqttClient {
+public class MqttClient implements ConnectionCredentials {
     private static final String TAG = MqttClient.class.getSimpleName();
     private Mqtt3AsyncClient client;
+
+    private final static MqttClient mqttClient = new MqttClient();
+
+
+    private MqttClient(){
+        connectToBroker(CLIENT_ID,BROKER_URL,PORT,USER,PASSWORD);
+    }
+
+    public static MqttClient getMqttClient() {
+        return mqttClient;
+    }
 
     public void connectToBroker(String identifier, String host, int port, String username, String password) {
         client = com.hivemq.client.mqtt.MqttClient.builder().useMqttVersion3().identifier(identifier).serverHost(host)

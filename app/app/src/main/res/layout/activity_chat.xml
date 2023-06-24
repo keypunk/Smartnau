@@ -14,22 +14,34 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/background_robot"
-        app:layout_constraintBottom_toTopOf="@id/itemList"
+        app:layout_constraintBottom_toTopOf="@id/chatBackground"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/itemList"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chatBackground"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:padding="15dp"
         android:scrollbars="vertical"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/background_chat_history"
-        app:layout_constraintBottom_toTopOf="@id/layoutSend" />
+        app:layout_constraintBottom_toTopOf="@id/layoutSend" >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/itemList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:scrollbars="vertical"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/background_chat_history"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageInfo"
