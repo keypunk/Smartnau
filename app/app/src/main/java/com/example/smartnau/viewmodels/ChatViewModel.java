@@ -18,6 +18,7 @@ public class ChatViewModel extends ViewModel {
     private Subscribe subscribe = new Subscribe(mqttClient);
     private Publish publish = new Publish(mqttClient);
 
+
     public List<BaseMessage> getMessageList() {
         return mMessageList;
     }
@@ -49,6 +50,10 @@ public class ChatViewModel extends ViewModel {
             mMessageList.add(greetingMessage);
             mMessageList.add(greetingMessage2);
         }
+    }
+
+    public void subscribe() {
+        subscribe.subscribeForMessages();
     }
 
 }

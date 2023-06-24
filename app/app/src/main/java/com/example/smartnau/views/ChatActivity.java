@@ -41,6 +41,7 @@ public class ChatActivity extends AppCompatActivity {
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
         viewModel.greetUser();
+        viewModel.subscribe();
 
 
         final Button button = findViewById(R.id.button2);
