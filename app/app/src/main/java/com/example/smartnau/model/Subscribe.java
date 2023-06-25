@@ -18,7 +18,7 @@ public class Subscribe implements ConnectionCredentials {
 
     public void subscribeForMessages() {
         // Subscribe for messages
-        mqttClient.subscribe(ROOM_MESSAGES, (message) -> {
+        mqttClient.subscribe(CLIENT_MESSAGES, (message) -> {
             try {
                 String convertedMessageContent = new String(message.getPayloadAsBytes()
                         , StandardCharsets.UTF_8);
@@ -29,6 +29,7 @@ public class Subscribe implements ConnectionCredentials {
             } catch (Exception e) {
                 Log.e(TAG, String.format("Message from %s: %s", message.getTopic()
                         , message.getPayloadAsBytes()));
+                throw new SubscribeException("Subscription for messages failed", e.getCause());
             }
         });
     }
@@ -52,6 +53,7 @@ public class Subscribe implements ConnectionCredentials {
             } catch (Exception e) {
                 Log.e(TAG, String.format("Message from %s: %s", presses.getTopic()
                         , presses.getPayloadAsBytes()));
+                throw new SubscribeException("Subscription for presses failed", e.getCause());
             }
         });
     }
