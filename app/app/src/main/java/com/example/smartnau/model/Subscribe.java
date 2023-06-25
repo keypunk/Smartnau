@@ -2,11 +2,15 @@ package com.example.smartnau.model;
 
 import android.util.Log;
 
+import com.example.smartnau.viewmodels.Utils;
+
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class Subscribe implements ConnectionCredentials {
     // Tag for Class
     private static final String TAG = Subscribe.class.getSimpleName();
+    Utils utils = new Utils();
 
 
     // Delegate MqttClient
@@ -16,13 +20,17 @@ public class Subscribe implements ConnectionCredentials {
         this.mqttClient = mqttClient;
     }
 
-    public void subscribeForMessages() {
+    public void subscribeForMessages(ArrayList<BaseMessage> list) {
         // Subscribe for messages
         mqttClient.subscribe(CLIENT_MESSAGES, (message) -> {
             try {
                 String convertedMessageContent = new String(message.getPayloadAsBytes()
                         , StandardCharsets.UTF_8);
                 receiveMessages(message.getTopic().toString(), convertedMessageContent);
+                RobotMessage addableMessage = new RobotMessage();
+                addableMessage.setMessage(Utils.formatSurveyResponse(convertedMessageContent));
+                addableMessage.setCreatedAt(System.currentTimeMillis());
+                list.add(addableMessage);
                 Log.d(TAG, String.format("Message received from topic '%s':: '%s'%n"
                         , message.getTopic(),
                         convertedMessageContent));
@@ -36,7 +44,6 @@ public class Subscribe implements ConnectionCredentials {
 
     public void receiveMessages(String topic, String message) {
         Log.d(TAG, String.format("Received message '%s' from topic '%s'", topic, message));
-        // TODO: Connect to ConnectionAdapter so it can be updated using DataBinding
     }
 
     // TODO: Separate yes and no button values from String (yy,nn)

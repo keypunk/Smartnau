@@ -19,7 +19,6 @@ public class Robot {
         currentState = RobotStates.IDLE;
     }
 
-
     public void question() {
         currentState = RobotStates.QUESTION;
     }
